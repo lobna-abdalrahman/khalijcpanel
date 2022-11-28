@@ -82,6 +82,7 @@ namespace Cpanel.Controllers
                         String Accountnumber = "99" + model.BranchCode + model.AccountTypecode + model.CurrencyCode +
                             model.AccountNumber;
 
+
                         //String Accountnumber = restmodel.account;
                         List<resetpass> result = new List<resetpass>();
                         result = ds.resetpassword(Accountnumber, infomodel.user_log);
