@@ -1,0 +1,100 @@
+﻿@model IEnumerable<Cpanel.Models.CustomerTransferReportViewModel>
+
+@{
+    ViewBag.Title = "Transfer Report";
+}
+<section class="content">
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <!-- TABLE: USerLog -->
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Customers Report</h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                            <i class="fa fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <br />
+                    <div class="table-responsive">
+                        <table id="example1" class="table table-bordered table-hover table-bordered table-striped">
+                            <thead style="color: cadetblue">
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.TranDate)
+                                    </th>
+                                    @*<th>
+                                        @Html.DisplayNameFor(model => model.TranFullReq)
+                                    </th>*@
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.TranFromAccount)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.TranToAccount)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.TranReqAmount)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.TranResult)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.TranStatus)
+                                    </th>
+                                    @*<th></th>*@
+                                </tr>
+                            </thead>
+                            <tbody>
+                                                                                                @foreach (var item in Model)
+{
+    string[] reqString;
+
+    if (item.TranFullReq.Contains(','))
+    {
+        reqString = item.TranFullReq.Split(',');
+        item.TranFromAccount = reqString[0];
+        item.TranToAccount = reqString[1];
+        item.TranReqAmount = reqString[2];
+
+    }
+
+
+    <tr class="@( item.TranStatus != "Secussfully" ? " label-danger" : " label-success")">
+
+
+
+        <td>
+            @Html.DisplayFor(modelItem => item.TranDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TranFromAccount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TranToAccount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TranReqAmount)
+        </td>
+        @*<td>
+                @Html.DisplayFor(modelItem => item.TranFullResp)
+            </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.TranResult)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TranStatus)
+        </td>
+    </tr>
+}
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

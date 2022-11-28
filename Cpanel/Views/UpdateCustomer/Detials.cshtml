@@ -1,0 +1,137 @@
+﻿@model Cpanel.Models.custinfo
+
+@*@{
+        Layout = null;
+    }*@
+
+
+<div class="content">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="box box-solid">
+                <div class="box-header with-border">
+                    @*<i class="fa fa-text-width"></i>*@
+                    <h3 class="box-title">Customer Information</h3>
+                </div>
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-md-8">
+
+                            <blockquote>
+
+                                <dl class="dl-horizontal">
+
+
+
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.user_name)
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.user_name)
+                                    </dd>
+
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.user_log)
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.user_log)
+                                    </dd>
+
+                                    @*<dt>
+                    @Html.DisplayNameFor(model => model.user_pwd)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.user_pwd)
+                </dd>*@
+
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.user_email)
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.user_email)
+                                    </dd>
+
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.user_mobile)
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.user_mobile)
+                                    </dd>
+
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.user_adrs)
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.user_adrs)
+                                    </dd>
+
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.name)
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.name)
+                                    </dd>
+
+                                    <dt>
+                                        @Html.DisplayNameFor(model => model.status)
+                                    </dt>
+
+                                    <dd>
+                                        @Html.DisplayFor(model => model.status)
+                                    </dd>
+
+                                    @*<dt>
+                    @Html.DisplayNameFor(model => model.lblconfirm)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.lblconfirm)
+                </dd>*@
+
+                                </dl>
+                                <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
+                                    <div class="btn-group" role="group" aria-label="First group">
+
+                                        @Html.ActionLink("Update", "Update", new { id = Model.user_id },new { @class="btn btn-success btn-block btn-flat " })
+                                    </div>
+                                    <div class="btn-group" role="group" aria-label="Second group">
+                                        @Html.ActionLink("Delete", "Delete", new { id = Model.user_id },new { @class="btn btn-danger  btn-block btn-flat " })
+
+
+                                    </div>
+                                </div>
+                                @if (ViewBag.Message != null)
+                                {
+                                    <script type="text/javascript">
+                                        window.onload = function () {
+                                            alert("@ViewBag.Message");
+                                        };
+                                    </script>
+                                }
+                            </blockquote>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $("#resoan").hide();
+    $("input[name='status']").on("change", function () {
+        if ($(this).val() == "false") {
+            $("#resoan").show();
+        }
+    });
+</script>
+
+

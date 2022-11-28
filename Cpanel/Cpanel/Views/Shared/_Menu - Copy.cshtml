@@ -1,0 +1,96 @@
+﻿@model IEnumerable<Cpanel.Models.Menu>
+
+@*<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">*@
+
+<div class="navigation">
+    @foreach (var m in Model)
+    {
+        if (m.MenuParentID == 0)
+        {
+            //  var submenu = Model.Where(n => n.MenuParentID == m.MID,true).ToList();
+            var submenu = Model.Where(n => n.MenuParentID == m.MID).ToList();
+            if (submenu != null && submenu.Count > 0)
+            {
+                <div class="dropdown">
+                    <button class="dropbtn">
+                        @m.MenuName
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        @foreach (var e in submenu)
+                        {
+                            <a href="@e.MenuURL">@e.MenuName </a>
+                        }
+                    </div>
+                </div>
+            }
+            else
+            {
+                //if parent menu does not have child menu
+                <a href="@m.MenuURL"><span style="font-size: 15px; color: #ffffff">@m.MenuName</span></a>
+            }
+        }
+    }
+</div>
+
+<style>
+    .navigation {
+        overflow: hidden;
+        background-color: #333;
+        font-family: Arial;
+    }
+
+        .navigation a {
+            float: left;
+            font-size: 16px;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+    .dropdown {
+        float: left;
+        overflow: hidden;
+    }
+
+        .dropdown .dropbtn {
+            font-size: 16px;
+            border: none;
+            outline: none;
+            color: white;
+            padding: 14px 16px;
+            background-color: inherit;
+        }
+
+        .navigation a:hover, .dropdown:hover .dropbtn {
+            background-color: red;
+        }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+    }
+
+        .dropdown-content a {
+            float: none;
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+
+            .dropdown-content a:hover {
+                background-color: #ddd;
+            }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+</style>
+

@@ -1,0 +1,99 @@
+﻿@model Cpanel.Models.CustomerRegBankinfo2
+@*@model IEnumerable<Cpanel.Models.CustomerRegBankinfo2>*@
+
+@{
+    ViewBag.Title = "Customer Infomation";
+}
+
+
+
+@*<section class="content-header">
+    <h1>
+        Account Statement
+        <small>View Statement</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i>Account</a></li>
+        <li class="active">Account Statement</li>
+    </ol>
+</section>*@
+
+<section class="content">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <!-- TABLE: LATEST Transactions -->
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Customer Information</h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                            <i class="fa fa-minus"></i>
+                        </button>
+                        @*<button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>*@
+                    </div>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div class="table-responsive">
+                     
+                         
+                            @*<div class="col-md-6 col-md-offset-0">*@
+                            @using (Html.BeginForm())
+                            {
+                                @Html.AntiForgeryToken()
+
+                                @Html.ValidationSummary(true)
+                                <table id="example1" class="table table-bordered table-hover table-bordered table-striped">
+                                    <thead style="color: cadetblue">
+                                        <tr>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.CustomerID)
+                                            </th>
+                                            <td>@Html.DisplayFor(model => model.CustomerID)</td>
+
+                                        </tr>
+                                    </thead>
+
+                                    <thead style="color: cadetblue">
+                                        <tr>
+
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.CustomerName)
+                                            </th>
+                                            <td>
+                                                @Html.DisplayFor(model => model.CustomerName)
+                                            </td>
+
+                                        </tr>
+                                    </thead>
+
+                                    <thead style="color: cadetblue">
+                                        <tr>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.CustomerPhone)
+                                            </th>
+                                            <td>
+                                                @Html.DisplayFor(model => model.CustomerPhone)
+                                            </td>
+
+
+                                        </tr>
+                                    </thead>
+                                </table>
+
+
+
+                                <div class="form-group">
+                                    <div class="col-xs-5 col-xs-offset-2">
+                                        <input type="submit" value="Submit" class="btn btn-danger btn-block btn-flat" />
+                                    </div>
+                                </div>
+                            }
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+     
+</section>

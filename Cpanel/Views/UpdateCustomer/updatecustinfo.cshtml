@@ -1,0 +1,115 @@
+﻿@model Cpanel.Models.custinfo
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>updatecustinfo</title>
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        
+        <div class="form-horizontal">
+            <h4>custinfo</h4>
+            <hr />
+            @Html.ValidationSummary(true)
+            <div class="form-group">
+                @Html.LabelFor(model => model.user_id, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.user_id)
+                    @Html.ValidationMessageFor(model => model.user_id)
+                </div>
+            </div>
+    
+            <div class="form-group">
+                @Html.LabelFor(model => model.user_name, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.user_name)
+                    @Html.ValidationMessageFor(model => model.user_name)
+                </div>
+            </div>
+    
+            <div class="form-group">
+                @Html.LabelFor(model => model.user_log, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.user_log)
+                    @Html.ValidationMessageFor(model => model.user_log)
+                </div>
+            </div>
+    
+            <div class="form-group">
+                @Html.LabelFor(model => model.user_pwd, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.user_pwd)
+                    @Html.ValidationMessageFor(model => model.user_pwd)
+                </div>
+            </div>
+    
+            <div class="form-group">
+                @Html.LabelFor(model => model.user_email, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.user_email)
+                    @Html.ValidationMessageFor(model => model.user_email)
+                </div>
+            </div>
+    
+            <div class="form-group">
+                @Html.LabelFor(model => model.user_mobile, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.user_mobile)
+                    @Html.ValidationMessageFor(model => model.user_mobile)
+                </div>
+            </div>
+    
+            <div class="form-group">
+                @Html.LabelFor(model => model.user_adrs, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.user_adrs)
+                    @Html.ValidationMessageFor(model => model.user_adrs)
+                </div>
+            </div>
+    
+            <div class="form-group">
+                @Html.LabelFor(model => model.name, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.name)
+                    @Html.ValidationMessageFor(model => model.name)
+                </div>
+            </div>
+    
+            <div class="form-group">
+                @Html.LabelFor(model => model.status, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.status)
+                    @Html.ValidationMessageFor(model => model.status)
+                </div>
+            </div>
+    
+            <div class="form-group">
+                @Html.LabelFor(model => model.lblconfirm, new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.lblconfirm)
+                    @Html.ValidationMessageFor(model => model.lblconfirm)
+                </div>
+            </div>
+    
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+    
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+</body>
+</html>

@@ -1,0 +1,85 @@
+﻿@model IEnumerable<Cpanel.Models.pendingacts>
+
+ 
+
+@{
+    ViewBag.Title = "New Account Authorization";
+}
+
+
+<section class="content">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <!-- TABLE: LATEST Transactions -->
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Customer Information</h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                            <i class="fa fa-minus"></i>
+                        </button>
+                        @*<button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>*@
+                    </div>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div class="table-responsive">
+
+                        <table id="example1" class="table table-bordered table-hover table-bordered table-striped">
+                            <thead style="color: cadetblue">
+
+                                <tr>
+                                    <th>
+                                      
+                                        @Html.DisplayNameFor(model => model.USER_NAME)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.DEF_ACC)
+                                    </th>
+                                    <th>
+                                            @Html.DisplayNameFor(model => model.ACC_NO)
+                                        </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <thead>
+
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.HiddenFor(modelItem => item.USER_ID)
+                                            @Html.DisplayFor(modelItem => item.USER_NAME)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.DEF_ACC)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.ACC_NO)
+                                            </td>
+                                        <td>
+
+                                            @Html.ActionLink("Details", "Details", new { id = item.USER_ID, act = item.ACC_NO })
+
+                                        </td>
+                                    </tr>
+                                }
+                            </thead>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</section>
+@if (ViewBag.SuccessMessage != null)
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            alert("@ViewBag.SuccessMessage");
+        };
+    </script>
+}

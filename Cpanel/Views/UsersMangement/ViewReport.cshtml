@@ -1,0 +1,97 @@
+﻿@model IEnumerable<Cpanel.Models.UsersMangementViewModel>
+
+@{
+    ViewBag.Title = "View Report";
+}
+
+<section class="content">
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <!-- TABLE: USerLog -->
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Log Report</h3>
+                    <div class="box-tools pull-right">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                            <i class="fa fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <br />
+                    <div class="table-responsive">
+                        <table id="example1" class="table table-bordered table-hover table-bordered table-striped">
+                            <thead style="color: cadetblue">
+                                <tr>
+
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.IpAddress)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.LoginTime)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.UserPass)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.UserLogin)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.LoginStatus)
+                                    </th>
+                                    @*<th></th>*@
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.IpAddress)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.LoginTime)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.UserPass)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.UserLogin)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.LoginStatus)
+                                        </td>
+                                        @*<td>
+                                                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                                                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                                                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                                            </td>*@
+                                    </tr>
+                                }
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+                <div class="box-footer">
+                    <p>
+                        @using (Html.BeginForm("SavePDF", "UsersMangement"))
+                        {
+                            <br />
+
+
+                            <div class="form-group">
+                                <div class="col-xs-10">
+                                    <input type="submit" value="Print" class="btn btn-danger btn-block btn-flat" />
+                                </div>
+                            </div>
+                        }
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,137 @@
+﻿@model IEnumerable<Cpanel.Models.userlist>
+
+<section class="content">
+    <div class="row">
+        <div class="col-md-auto">
+            <!-- TABLE: LATEST Transactions -->
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Users Information</h3>
+
+                </div>
+
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div class="table-responsive">
+
+                        <table id="example1" class="table table-bordered table-hover table-bordered table-striped">
+                            <thead style="color: cadetblue">
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.user_id)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.name)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.rolename)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.user_branch)
+                                    </th>
+                                    <th>
+
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.OrderBy(item => item.user_id))
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.user_id)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.name)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.rolename)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.user_branch)
+                                        </td>
+                                        <td>
+                                            <table>
+                                                <tr>
+                                                    @Html.ActionLink("Update", "Edit", new { id = item.user_id }, new { @class = "btn btn-success btn-block btn-flat " })
+                                                </tr>
+                                                <tr>@Html.ActionLink("Reset", "Reset", new { id = item.user_id }, new { @class = "btn btn-warning btn-block btn-flat " })</tr>
+                                                <tr> @Html.ActionLink("Delete", "Delete", new { id = item.user_id }, new { @class = "btn btn-danger btn-block btn-flat " })</tr>
+                                            </table>
+                                            @*@Html.ActionLink("Details", "Details", new { id = item.user_id },,new { @class="btn btn-success btn-block btn-flat " })) |*@
+
+
+                                        </td>
+                                    </tr>
+                                }
+
+
+                            </tbody>
+                        </table>
+
+                    </div>
+
+
+
+
+                    <div class="box-footer">
+                        <section class="row">
+                            <div class="col-md-8">
+
+                                @using (Html.BeginForm("Add", "User", FormMethod.Get))
+                                {
+
+
+
+                                    <div class="form-group">
+                                        <div class="col-xs-4">
+                                            <input type="submit" value="Create New User" class="btn btn-primary btn-block btn-flat" />
+                                        </div>
+                                    </div>
+                                }
+
+                                @*<div class="btn-group">
+
+                                        @Html.ActionLink("Create New User", "Add", new { @class = "btn btn-primary btn-block btn-flat " })
+
+                                    </div>*@
+                                @* Save PDF *@
+                                @using (Html.BeginForm("CreatePdf", "User"))
+                                {
+
+
+
+                                    <div class="form-group">
+                                        <div class="col-xs-4">
+                                            <input type="submit" value="Print" class="btn btn-danger btn-block btn-flat" />
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+
+
+
+                        </section>
+
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</section>
+
+
+
+
+
+@if (ViewBag.SuccessMessage != null)
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            alert("@ViewBag.SuccessMessage");
+        };
+    </script>
+}

@@ -1,0 +1,149 @@
+﻿@model IEnumerable<Cpanel.Models.ChqRequest>
+
+@*@{
+        Layout = null;
+    }
+
+    <!DOCTYPE html>
+
+    <html>
+    <head>
+        <meta name="viewport" content="width=device-width" />
+        <title>View</title>
+    </head>
+    <body>
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.request_id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.accountmap)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.booksize)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.date)
+                </th>
+                <th></th>
+            </tr>
+
+        @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.request_id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.accountmap)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.booksize)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.date)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                </td>
+            </tr>
+        }
+
+        </table>
+    </body>
+    </html>*@
+
+
+<section class="content">
+    <div class="row">
+        <div class="col-md-auto">
+            <!-- TABLE: LATEST Transactions -->
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Requests Information</h3>
+                    @*   <div class="box-tools pull-right">
+                         <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                             <i class="fa fa-minus"></i>
+                         </button>
+                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                        </div>*@
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div class="table-responsive">
+
+                        <table id="example1" class="table table-bordered table-hover table-bordered table-striped">
+                            <thead style="color: cadetblue">
+
+                                <tr>
+                                    <th class="col-md-4">
+                                        @Html.DisplayNameFor(model => model.name)
+                                    </th>
+                                    <th class="col-md-5 ">
+                                        @Html.DisplayNameFor(model => model.accountmap)
+                                    </th>
+                                    <th class="col-md-1">
+                                        @Html.DisplayNameFor(model => model.booksize)
+                                    </th>
+                                    <th class="col-md-2">@Html.DisplayNameFor(model => model.date)</th>
+                                </tr>
+                            </thead>
+                            <thead>
+
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.name)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.accountmap)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.booksize)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.date)
+                                        </td>
+                                        <td>
+
+                                            @Html.ActionLink("Accept", "Accept", new { id = item.request_id},new { @class="btn btn-success btn-block btn-flat " })
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("Reject", "Reject", new { id = item.request_id },new { @class="btn btn-danger  btn-block btn-flat " })
+
+
+
+                                        </td>
+                                    </tr>
+                                }
+                            </thead>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</section>
+@if (ViewBag.SuccessMessage != null)
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            alert("@ViewBag.SuccessMessage");
+        };
+    </script>
+}

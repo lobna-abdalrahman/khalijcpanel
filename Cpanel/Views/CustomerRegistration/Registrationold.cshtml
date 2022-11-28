@@ -1,0 +1,103 @@
+﻿@model Cpanel.Models.CustomerRegBankinfo
+
+@{
+    ViewBag.Title = "Registration";
+}
+
+<h2>Registration</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>CustomerRegBankinfo</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Branch, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.BranchCode, Model.Branches, "-- Select Branch --", new { @class = "form-control ", @placeholder = "Branch..." })
+                @*@Html.DropDownList("BranchList", (IEnumerable<SelectListItem>)ViewBag.branchList, "-- Select Branch --", new { @class = "form-control ", @placeholder = "Branch..." })*@
+                @* @Html.EditorFor(model => model.Branch)*@
+                @Html.ValidationMessageFor(model => model.BranchCode)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Currency, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.CurrencyCode, Model.Currencies, "-- Select Currency --", new { @class = "form-control ", @placeholder = "Branch..." })
+                @* @Html.DropDownList("CurrencyList", (IEnumerable<SelectListItem>)ViewBag.CurrencyList, "-- Select Currency --", new { @class = "form-control select2", @placeholder = "Branch..." })*@
+                @*@Html.EditorFor(model => model.Currency)*@
+                @Html.ValidationMessageFor(model => model.CurrencyCode)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AccountType, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.AccountTypecode, Model.AccTypes, "-- Select Account Type --", new { @class = "form-control ", @placeholder = "Branch..." })
+                @*@Html.DropDownList("AccTypeList", (IEnumerable<SelectListItem>) ViewBag.AccTypesList, "-- Select Account Type --", new {@class = "form-control ", @placeholder = "Branch..."})*@
+                @*@Html.EditorFor(model => model.AccountType)*@
+                @Html.ValidationMessageFor(model => model.AccountTypecode)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AccountNumber, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.AccountNumber , new { @class = "form-control ", @placeholder = "Account #..." })
+                @Html.ValidationMessageFor(model => model.AccountNumber)
+            </div>
+        </div>
+
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.CustomerName, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.CustomerName, new { @class = "form-control ", @placeholder = "Name..." })
+                @Html.ValidationMessageFor(model => model.CustomerName)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CustomerPhone, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.CustomerPhone, new { @class = "form-control ", @placeholder = "Phone #...", Type = "phone" })
+                @Html.ValidationMessageFor(model => model.CustomerPhone)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CustomerID, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.CustomerID, new { @class = "form-control ", @placeholder = "ID ..." })
+                @Html.ValidationMessageFor(model => model.CustomerID)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CustomerCard, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.CustomerCard, new { @class = "form-control ", @placeholder = "Card #...",@Type="number" })
+                @Html.ValidationMessageFor(model => model.CustomerCard)
+            </div>
+        </div>*@
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="submit" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Registration")
+</div>
+
+@*@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}*@

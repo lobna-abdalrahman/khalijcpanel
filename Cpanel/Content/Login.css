@@ -1,0 +1,16 @@
+﻿body {
+
+}
+.myBG {
+    background: url("icons/login_bg.png") !important;
+}
+.my-box {
+    background: rgba(142, 144, 146, 0.49) !important;
+}
+.my-nav-custom {
+    margin-left: 115px !important;
+}
+
+.my-box-header {
+    color: #00c0ef !important;
+}

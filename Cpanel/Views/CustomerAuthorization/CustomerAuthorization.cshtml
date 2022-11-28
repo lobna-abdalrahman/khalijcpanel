@@ -1,0 +1,81 @@
+﻿@model IEnumerable<Cpanel.Models.CustomerAuthorization>
+
+@{
+    ViewBag.Title = "CustomerAuth";
+    }
+
+
+<section class="content">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <!-- TABLE: LATEST Transactions -->
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Customer Information</h3>
+                 @*   <div class="box-tools pull-right">
+     <button type="button" class="btn btn-box-tool" data-widget="collapse">
+         <i class="fa fa-minus"></i>
+     </button>
+    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                    </div>*@
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div class="table-responsive">
+
+                        <table id="example1" class="table table-bordered table-hover table-bordered table-striped">
+                            <thead style="color: cadetblue">
+
+                                <tr>
+                                    <th class ="col-md-6  ">
+                                        @Html.DisplayNameFor(model => model.Customername)
+                                    </th>
+                                    <th class="col-md-6  ">
+                                        @Html.DisplayNameFor(model => model.Customeraccount)
+                                    </th>
+                                    @*<th>
+                                        @Html.DisplayNameFor(model => model.CustomerID)
+                                    </th>*@
+                                    <th></th>
+                                </tr>
+                            </thead>
+                           
+
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Customername)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Customeraccount)
+                                        </td>
+                                        @*<td>
+                                            @Html.DisplayFor(modelItem => item.CustomerID)
+                                        </td>*@
+                                        <td>
+                                          
+                                            @Html.ActionLink("Details", "Details", new { id = item.CustomerID }) 
+                                           
+                                        </td>
+                                    </tr>
+                                }
+                            </thead>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</section>
+@if (ViewBag.SuccessMessage != null)
+{
+    <script type="text/javascript">
+                window.onload = function () {
+                    alert("@ViewBag.SuccessMessage");
+                };
+    </script>
+}
