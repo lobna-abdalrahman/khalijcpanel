@@ -30,6 +30,7 @@ namespace Cpanel.Context
 
             string json = "";
             json = JsonConvert.SerializeObject(dynamicJson);
+
             var responJsonText = "";
             JObject JResp = new JObject();
 

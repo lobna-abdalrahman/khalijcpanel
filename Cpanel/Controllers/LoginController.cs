@@ -19,10 +19,11 @@ namespace Cpanel.Controllers
             return View();
         }
         [HttpPost]
+
         public ActionResult Login(Loginmodel model)
         {
             
-               Loginmodelresult result= new Loginmodelresult();
+              Loginmodelresult result= new Loginmodelresult();
             try
             {
                 string ipAddress = Request.ServerVariables["HTTP_X_FORWARDED_FOR"];

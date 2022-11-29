@@ -14,6 +14,7 @@ namespace Cpanel.Controllers
         DataSource ds = new DataSource();
 
         //
+
         // GET: /CustomerRegistration/
         public ActionResult Registration()
         {
